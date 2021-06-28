@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1-experimental
 
-FROM --platform=${BUILDPLATFORM} golang:1.15.2-alpine AS base
+FROM --platform=${BUILDPLATFORM} golang:1.16.5-alpine AS base
 WORKDIR /src
 ENV CGO_ENABLED=0
 COPY go.* .
