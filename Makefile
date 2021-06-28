@@ -4,6 +4,8 @@ test: lint unit-test
 PLATFORM=local
 UTIL_TAG=1.16.5-alpine
 
+export DOCKER_BUILDKIT=1
+
 .PHONY: bin/example
 bin/example:
 	@docker build . --target bin \
