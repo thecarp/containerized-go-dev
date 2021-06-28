@@ -2,6 +2,7 @@ all: bin/example
 test: lint unit-test
 
 PLATFORM=local
+UTIL_TAG=1.16.5-alpine
 
 .PHONY: bin/example
 bin/example:
@@ -22,3 +23,11 @@ unit-test-coverage:
 .PHONY: lint
 lint:
 	@docker build . --target lint
+
+.PHONY: tidy
+tidy:
+	@docker run -t -i -v `pwd`:/src --workdir /src --rm golang:${UTIL_TAG} /usr/local/go/bin/go mod tidy
+
+.PHONY: init
+init:
+	@docker run -t -i -v `pwd`:/src --workdir /src --rm golang:${UTIL_TAG} /usr/local/go/bin/go mod init

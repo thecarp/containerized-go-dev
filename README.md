@@ -94,6 +94,9 @@ The [Makefile](./Makefile) is purely used to script the required `docker build`
 commands as these can get quite long. You can replace this file with a scripting
 language of your choice.
 
+Additional targets 'init' and 'tidy' are provided for updating the project
+metadata in go.mod and go.sums. `make tidy` should be run whenever new requirements are added.
+
 ### CI
 
 The CI is configured in the [ci.yaml file](./.github/workflows/ci.yaml). By
