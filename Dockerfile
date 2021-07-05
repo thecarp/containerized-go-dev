@@ -24,7 +24,7 @@ FROM base AS unit-test
 RUN --mount=target=. \
     --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
-    mkdir /out && go test -v -coverprofile=/out/cover.out ./...
+    go test -v -coverprofile=/out/cover.out ./...
 
 FROM golangci/golangci-lint:v1.31.0-alpine AS lint-base
 
