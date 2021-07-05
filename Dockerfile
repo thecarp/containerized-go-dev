@@ -52,6 +52,7 @@ COPY --from=mod-init-base /out/go.mod /go.mod
 COPY --from=mod-init-base /out/go.sum /go.sum
 
 FROM scratch AS tidy
+COPY --from=mod-tidy /out/go.mod /go.mod
 COPY --from=mod-tidy /out/go.sum /go.sum
 
 FROM scratch AS unit-test-coverage
