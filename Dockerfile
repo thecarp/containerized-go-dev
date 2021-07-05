@@ -40,7 +40,7 @@ FROM base as mod-init-base
 WORKDIR /out
 COPY . .
 ENV MODNAME example
-RUN rm -f go.sum go.mod ; go mod init "${MODNAME}" && go mod tidy
+RUN go mod init "${MODNAME}" && go mod tidy
 
 FROM base AS mod-tidy
 WORKDIR /out
