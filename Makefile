@@ -28,8 +28,10 @@ lint:
 
 .PHONY: tidy
 tidy:
-	@docker run -t -i -v `pwd`:/src --workdir /src --rm golang:${UTIL_TAG} /usr/local/go/bin/go mod tidy
+	export DOCKER_BUILDKIT=1
+	@docker build . --target tidy --output .
 
 .PHONY: init
 init:
-	@docker run -t -i -v `pwd`:/src --workdir /src --rm golang:${UTIL_TAG} /usr/local/go/bin/go mod init
+	export DOCKER_BUILDKIT=1
+	@docker build . --target mod-init --output .
