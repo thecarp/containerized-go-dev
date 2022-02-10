@@ -1,6 +1,6 @@
-# syntax = docker/dockerfile:1-experimental
+# syntax = docker/dockerfile:1
 
-FROM --platform=${BUILDPLATFORM} golang:1.16.5-alpine AS base
+FROM --platform=${BUILDPLATFORM} golang:1.17-alpine AS base
 WORKDIR /src
 ENV CGO_ENABLED=1
 RUN apk update
@@ -26,7 +26,7 @@ RUN --mount=target=. \
     --mount=type=cache,target=/root/.cache/go-build \
     go test -v -coverprofile=/out/cover.out ./...
 
-FROM golangci/golangci-lint:v1.31.0-alpine AS lint-base
+FROM golangci/golangci-lint:v1.43-alpine AS lint-base
 
 FROM base AS lint
 RUN --mount=target=. \
